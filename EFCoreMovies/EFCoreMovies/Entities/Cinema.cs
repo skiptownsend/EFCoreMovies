@@ -8,5 +8,6 @@ namespace EFCoreMovies.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }
         public Point Location { get; set; }
+        public CinemaOffer CinemaOffer { get; set; }
     }
 }
