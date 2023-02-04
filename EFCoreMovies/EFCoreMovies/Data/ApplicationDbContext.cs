@@ -19,7 +19,8 @@ namespace EFCoreMovies.Data
             modelBuilder.Entity<Actor>().Property(p => p.DateOfBirth).HasColumnType("date");
 
             modelBuilder.Entity<Cinema>().Property(p => p.Name).HasMaxLength(150).IsRequired();
-            modelBuilder.Entity<Cinema>().Property(p => p.Price).HasPrecision(precision: 9, scale: 2);
+
+            modelBuilder.Entity<CinemaHall>().Property(p => p.Cost).HasPrecision(precision: 9, scale: 2);
 
             modelBuilder.Entity<Movie>().Property(p => p.Title).HasMaxLength(250).IsRequired();
             modelBuilder.Entity<Movie>().Property(p => p.ReleaseDate).HasColumnType("date");
@@ -36,5 +37,6 @@ namespace EFCoreMovies.Data
         public DbSet<Cinema> Cinemas { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<CinemaOffer> CinemaOffers { get; set; }
+        public DbSet<CinemaHall> CinemaHalls { get; set; }
     }
 }
