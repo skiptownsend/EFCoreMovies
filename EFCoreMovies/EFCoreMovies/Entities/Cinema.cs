@@ -1,4 +1,5 @@
-﻿using NetTopologySuite.Geometries;
+﻿using EFCoreMovies.Migrations;
+using NetTopologySuite.Geometries;
 
 namespace EFCoreMovies.Entities
 {
