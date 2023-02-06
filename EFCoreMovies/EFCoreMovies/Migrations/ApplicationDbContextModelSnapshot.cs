@@ -35,7 +35,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasIndex("MoviesId");
 
-                    b.ToTable("CinemaHallMovie", (string)null);
+                    b.ToTable("CinemaHallMovie");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.Actor", b =>
@@ -47,6 +47,7 @@ namespace EFCoreMovies.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Biography")
+                        .HasMaxLength(150)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -59,7 +60,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actors", (string)null);
+                    b.ToTable("Actors");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.Cinema", b =>
@@ -80,7 +81,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cinemas", (string)null);
+                    b.ToTable("Cinemas");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.CinemaHall", b =>
@@ -107,7 +108,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasIndex("CinemaId");
 
-                    b.ToTable("CinemaHalls", (string)null);
+                    b.ToTable("CinemaHalls");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.CinemaOffer", b =>
@@ -136,7 +137,7 @@ namespace EFCoreMovies.Migrations
                     b.HasIndex("CinemaId")
                         .IsUnique();
 
-                    b.ToTable("CinemaOffers", (string)null);
+                    b.ToTable("CinemaOffers");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.Genre", b =>
@@ -154,7 +155,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres", (string)null);
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.Movie", b =>
@@ -165,7 +166,7 @@ namespace EFCoreMovies.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("InCinema")
+                    b.Property<bool>("InCinemas")
                         .HasColumnType("bit");
 
                     b.Property<string>("PosterURL")
@@ -183,7 +184,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.MovieActor", b =>
@@ -205,7 +206,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasIndex("ActorId");
 
-                    b.ToTable("MoviesActors", (string)null);
+                    b.ToTable("MoviesActors");
                 });
 
             modelBuilder.Entity("GenreMovie", b =>
@@ -220,7 +221,7 @@ namespace EFCoreMovies.Migrations
 
                     b.HasIndex("MoviesId");
 
-                    b.ToTable("GenreMovie", (string)null);
+                    b.ToTable("GenreMovie");
                 });
 
             modelBuilder.Entity("CinemaHallMovie", b =>
@@ -252,7 +253,7 @@ namespace EFCoreMovies.Migrations
             modelBuilder.Entity("EFCoreMovies.Entities.CinemaOffer", b =>
                 {
                     b.HasOne("EFCoreMovies.Entities.Cinema", null)
-                        .WithOne("CinemaOffer")
+                        .WithOne("Offer")
                         .HasForeignKey("EFCoreMovies.Entities.CinemaOffer", "CinemaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -301,7 +302,7 @@ namespace EFCoreMovies.Migrations
                 {
                     b.Navigation("CinemaHalls");
 
-                    b.Navigation("CinemaOffer");
+                    b.Navigation("Offer");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.Movie", b =>

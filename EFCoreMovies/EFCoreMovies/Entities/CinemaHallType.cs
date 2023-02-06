@@ -2,8 +2,8 @@
 {
     public enum CinemaHallType
     {
-        TwoDimensions = 1,
-        ThreeDimensions = 2,
+        TwoD = 1,
+        ThreeD = 2,
         CXC = 3
     }
 }

@@ -1,5 +1,4 @@
-﻿using EFCoreMovies.Migrations;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
 
 namespace EFCoreMovies.Entities
 {
@@ -8,7 +7,7 @@ namespace EFCoreMovies.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public Point Location { get; set; }
-        public CinemaOffer CinemaOffer { get; set; }
+        public CinemaOffer Offer { get; set; }
         public HashSet<CinemaHall> CinemaHalls { get; set; }
     }
 }

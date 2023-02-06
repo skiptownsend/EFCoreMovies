@@ -13,8 +13,8 @@ using NetTopologySuite.Geometries;
 namespace EFCoreMovies.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230205141006_CreateMovieActorEntity")]
-    partial class CreateMovieActorEntity
+    [Migration("20230206184600_InitialSetupEntitiesRelationshipsConfigurationsDbContext")]
+    partial class InitialSetupEntitiesRelationshipsConfigurationsDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,7 @@ namespace EFCoreMovies.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Biography")
+                        .HasMaxLength(150)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateOfBirth")
@@ -167,7 +168,7 @@ namespace EFCoreMovies.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("InCinema")
+                    b.Property<bool>("InCinemas")
                         .HasColumnType("bit");
 
                     b.Property<string>("PosterURL")
@@ -254,7 +255,7 @@ namespace EFCoreMovies.Migrations
             modelBuilder.Entity("EFCoreMovies.Entities.CinemaOffer", b =>
                 {
                     b.HasOne("EFCoreMovies.Entities.Cinema", null)
-                        .WithOne("CinemaOffer")
+                        .WithOne("Offer")
                         .HasForeignKey("EFCoreMovies.Entities.CinemaOffer", "CinemaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -303,7 +304,7 @@ namespace EFCoreMovies.Migrations
                 {
                     b.Navigation("CinemaHalls");
 
-                    b.Navigation("CinemaOffer");
+                    b.Navigation("Offer");
                 });
 
             modelBuilder.Entity("EFCoreMovies.Entities.Movie", b =>
